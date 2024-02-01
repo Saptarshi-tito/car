@@ -8,12 +8,8 @@ import Image from "next/image";
 import { manufacturers } from "@/constants";
 import { SearchManufacturerProps } from "@/types";
 
-const SearchManufacturer = ({
-  manufacturer,
-  setManufacturer,
-}: SearchManufacturerProps) => {
+const SearchManufacturer = ({ manufacturer, setManufacturer }: SearchManufacturerProps) => {
   const [query, setQuery] = useState("");
-
 
   const filteredManufacturers =
     query === ""
@@ -68,24 +64,22 @@ const SearchManufacturer = ({
                 >
                   {({ selected, active }) => (
                     <>
-                     <span
-                          className={`block truncate ${
-                            selected ? 'font-medium' : 'font-normal'
+                      <span
+                        className={`block truncate ${
+                          selected ? "font-medium" : "font-normal"
+                        }`}
+                      >
+                        {item}
+                      </span>
+                      {selected ? (
+                        <span
+                          className={`absolute inset-y-0 left-0 flex items-center pl-3 ${
+                            active ? "text-white" : "text-teal-600"
                           }`}
-                        >
-                          {item}
-                        </span>
-                        {selected ? (
-                          <span
-                            className={`absolute inset-y-0 left-0 flex items-center pl-3 ${
-                              active ? 'text-white' : 'text-teal-600'
-                            }`}
-                          >
-                          
-                          </span>
-                        ) : null}
+                        ></span>
+                      ) : null}
                     </>
-              )}
+                  )}
                 </Combobox.Option>
               ))}
             </Combobox.Options>
